@@ -6,13 +6,13 @@ exports.seed = function (knex, Promise) {
           id: 1,
           emailSent: '04/12/18',
           subject: 'Test',
-          recipients: [1, 3, 4]
+          recipients: {recipients:[1, 3, 4]}
         },
         {
           id: 2,
           emailSent: '04/13/18',
           subject: 'Test New',
-          recipients: [1, 3]
+          recipients: { recipients:[1, 3]}
         }
       ]);
     }).then(() => {
