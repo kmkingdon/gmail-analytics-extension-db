@@ -14,6 +14,12 @@ app.get("/emails", (request, response) => {
     }).catch(console.error);
 });
 
+app.get("/sent", (request, response) => {
+    queries.list('sent').then(sent => {
+        response.json({ sent });
+    }).catch(console.error);
+});
+
 app.post("/emails", (request, response) => {
     queries.read('emails', request.body.email).then(email => {
         if(email === undefined) {
@@ -24,6 +30,12 @@ app.post("/emails", (request, response) => {
             response.json({email})
         }
     })
+});
+
+app.post("/sent", (request, response) => { 
+    queries.create('sent', request.body).then(sent => {
+        response.json({ sent });
+    }).catch(console.error);
 });
 
 app.use((request, response) => {
